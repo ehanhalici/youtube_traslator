@@ -1,0 +1,4 @@
+__pycache__/
+.venv/
+en_core_web_trf-3.7.3-py3-none-any.whl
+original_subtitle

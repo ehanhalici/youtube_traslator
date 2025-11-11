@@ -1,0 +1,20 @@
+[project]
+name = "youtube-translator"
+version = "0.1.0"
+description = "youtube translator"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+             "spacy",
+             "pysbd",
+             "en-core-web-trf",
+             "debugpy>=1.8.17",
+             "aiofiles",
+             "pyperclip"
+             
+]
+
+[tool.uv.sources]
+en-core-web-trf = { path = "en_core_web_trf-3.7.3-py3-none-any.whl" }
+
+# pip install --no-cache-dir --force-reinstall spacy thinc
