@@ -4,7 +4,7 @@ from typing import List, Dict
 from dataclasses import dataclass
 
 from copy import deepcopy as copy
-
+from subtitle_downloader import download_subtitle
 @dataclass
 class Word:
     key: str
@@ -170,6 +170,9 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     
         
 def main(subtitle_name):
+    subtitle_name = download_subtitle(subtitle_name)
+    if subtitle_name is None:
+        return
     print_info()
     en = load_subtitle(subtitle_name)
     process_events( en["events"])
@@ -181,7 +184,7 @@ def main(subtitle_name):
     
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("USAGE: python3 cut_analysis.py subtitle_name")
+        print("USAGE: python3 cut_analysis.py video_url")
         exit(-1)
     subtitle_name = sys.argv[1]
     main(subtitle_name)

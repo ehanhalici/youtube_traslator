@@ -10,8 +10,8 @@ dependencies = [
              "en-core-web-trf",
              "debugpy>=1.8.17",
              "aiofiles",
-             "pyperclip"
-             
+             "pyperclip",
+             "yt-dlp"             
 ]
 
 [tool.uv.sources]
