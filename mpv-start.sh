@@ -12,7 +12,7 @@ YOUTUBE_URL="$1"
 
 # 2. Altyazıyı oluştur
 echo "Altyazı oluşturuluyor ($INPUT_NAME kullanılarak)..."
-python3 cut_analysis.py "$YOUTUBE_URL" > subtitle.ass
+uv run cut_analysis.py "$YOUTUBE_URL" > subtitle.ass
 
 if [ $? -ne 0 ]; then
     echo "HATA: subtitle.ass oluşturulamadı. Python scripti hata verdi."
