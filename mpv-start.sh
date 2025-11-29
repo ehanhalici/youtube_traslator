@@ -2,17 +2,17 @@
 #!/bin/bash
 
 # 1. Argüman kontrolü: URL ve girdi dosyası adı verilmiş mi?
-if [ -z "$1" ]; then
-    echo "Kullanım: $0 <youtube_url>"
-    echo "Örnek: $0 https://youtu.be/0o8Ex8mXigU"
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Kullanım: $0 <youtube_url> lang"
     exit 1
 fi
 
 YOUTUBE_URL="$1"
+LANG="$2"
 
 # 2. Altyazıyı oluştur
 echo "Altyazı oluşturuluyor ($INPUT_NAME kullanılarak)..."
-uv run cut_analysis.py "$YOUTUBE_URL" > subtitle.ass
+uv run cut_analysis.py "$YOUTUBE_URL" "$LANG" > subtitle.ass
 
 if [ $? -ne 0 ]; then
     echo "HATA: subtitle.ass oluşturulamadı. Python scripti hata verdi."

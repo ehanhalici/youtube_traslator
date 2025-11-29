@@ -12,9 +12,9 @@ def silent_hook(d):
     pass
 
 
-def download_subtitle(video_url: str) -> Optional[str]:
+def download_subtitle(video_url: str, lang: str) -> Optional[str]:
     subtitle_name = video_url.replace("/", '_')
-    subtitle_name_orig_name = subtitle_name   +".en.json3"
+    subtitle_name_orig_name = subtitle_name   +"."+lang+".json3"
 
     if os.path.exists(subtitle_name_orig_name):
         return subtitle_name_orig_name
@@ -22,7 +22,7 @@ def download_subtitle(video_url: str) -> Optional[str]:
     ydl_opts = {
         # '--write-auto-sub' -> Otomatik altyazıları yaz
         'writeautomaticsub': True,
-        'subtitleslangs': ["en"],
+        'subtitleslangs': [lang],
         'subtitlesformat': 'json3',
         'skip_download': True,
         'quiet': True,
@@ -30,6 +30,7 @@ def download_subtitle(video_url: str) -> Optional[str]:
         'outtmpl': subtitle_name,
         'logger': SilentLogger(),
         'progress_hooks': [silent_hook],
+        'cookiesfrombrowser': ('firefox',),
     }
 
     try:

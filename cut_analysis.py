@@ -169,8 +169,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     )
     
         
-def main(subtitle_name):
-    subtitle_name = download_subtitle(subtitle_name)
+def main(url: str, lang: str):
+    subtitle_name = download_subtitle(url, lang)
     if subtitle_name is None:
         return
     print_info()
@@ -183,8 +183,9 @@ def main(subtitle_name):
     
     
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("USAGE: python3 cut_analysis.py video_url")
+    if len(sys.argv) != 3:
+        print("USAGE: python3 cut_analysis.py video_url tr/en")
         exit(-1)
-    subtitle_name = sys.argv[1]
-    main(subtitle_name)
+    url = sys.argv[1]
+    lang = sys.argv[2]
+    main(url,lang)
